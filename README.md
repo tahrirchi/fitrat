@@ -1,18 +1,24 @@
-# fitrat
+# Fitrat
 NLP library for Uzbek. It includes morphological analysis, transliterators, language identifiers, tokenizers and many more. 
 
 It is named after historian and linguist Abdurauf Fitrat, who was one of the creators of Modern Uzbek, as well as the first Uzbek professor. 
 
-## Transliterator
+# Installation
 
-### Cyrillic-Latin transliterator
+```
+pip install fitrat
+```
 
-Example of usage:
+# Usage 
 
 ```python
-from fitrat import CyrLatTransliterator
+from fitrat import Transliterator, Type
 
-sentence = CyrLatTransliterator("Кеча циркка бордим")
+t = Transliterator()
+result = t.convert("Кеча циркка бордим")
+print(result)
 
-print(sentence)
+t2 = Transliterator(Type.LATCYR)
+result = t2.convert("Men Tursunxonman, sog' bo'lasiz!")
+print(result)
 ```

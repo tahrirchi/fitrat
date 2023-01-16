@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fitrat"
+version = "0.0.1"
+authors = [
+  { name="Muhammadsaid Mamasaidov", email="place2play@gmail.com" },
+  { name="Jasur Yusupov", email="jasuryusupov14@gmail.com" },
+]
+license = {file = "LICENSE"}
+keywords = ["tahrirchi", "language", "transliteration", "morphology", "uzbek", "nlp"]
+description = "NLP library for Uzbek. It includes morphological analysis, language identification, transliterators and tokenizers."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX",
+    "Topic :: Text Processing :: Linguistic"
+]
+dependencies = [
+  "hfst-dev==3.15.0.10b0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/tahrirchi/fitrat"
+"Bug Tracker" = "https://github.com/tahrirchi/fitrat/issues"

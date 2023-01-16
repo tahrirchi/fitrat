@@ -1,10 +1,25 @@
-from cyr_lat.model_compile import model_compile
+from enum import Enum
+from .cyr_lat.model_compile import model_compile as cyrlat_model
+from .lat_cyr.model_compile import model_compile as latcyr_model
+
+
+class Type(Enum):
+	CYRLAT = 0
+	LATCYR = 1
+
 
 class Transliterator:
-	model = model_compile()
+	__models = {
+		Type.CYRLAT: cyrlat_model(),
+		Type.LATCYR: latcyr_model()
+	}
+
+	def __init__(self, type: Type = Type.CYRLAT) -> None:
+		self.model = self.__models[type]
 
 	def convert(self, text: str) -> str:
 		return self.model.lookup(text)[0][0]
+
 
 if __name__=="__main__":
 	l = Transliterator()
