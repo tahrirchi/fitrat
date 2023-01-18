@@ -1,0 +1,6 @@
+all_c.txt
+all.txt 
+*.ipynb
+test.txt
+model/langdetect.bin
+model/langdetect.vec
