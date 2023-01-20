@@ -13,6 +13,8 @@ This language detector recognizes the following languages:
 - Italian
 - Other (more than 50 languages labeled as `oth`)
 
+We don't think that one needs to recognize that many languages using our library.
+
 ## Training and evaluation
 
 For training, we used the following script:

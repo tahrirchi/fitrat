@@ -1,7 +1,8 @@
 # Fitrat
-NLP library for Uzbek. It includes morphological analysis, transliterators, language identifiers, tokenizers and many more. 
 
-It is named after historian and linguist Abdurauf Fitrat, who was one of the creators of Modern Uzbek, as well as the first Uzbek professor. 
+NLP library for Uzbek. It includes morphological analysis, transliterators, language identifiers, tokenizers and many more.
+
+It is named after historian and linguist Abdurauf Fitrat, who was one of the creators of Modern Uzbek, as well as the first Uzbek professor.
 
 # Installation
 
@@ -9,7 +10,7 @@ It is named after historian and linguist Abdurauf Fitrat, who was one of the cre
 pip install fitrat
 ```
 
-# Usage 
+# Usage
 
 ```python
 from fitrat import Transliterator, Type
