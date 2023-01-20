@@ -18,7 +18,7 @@ t = Transliterator()
 result = t.convert("Кеча циркка бордим")
 print(result)
 
-t2 = Transliterator(Type.LATCYR)
+t2 = Transliterator(to=Type.CYR)
 result = t2.convert("Men Tursunxonman, sog' bo'lasiz!")
 print(result)
 ```
