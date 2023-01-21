@@ -14,8 +14,12 @@ class Transliterator:
         Type.CYR: latcyr_model()
     }
 
-    def __init__(self, to: Type = Type.LAT) -> None:
+    def __init__(self, *, to: Type = Type.LAT) -> None:
         self.model = self.__models[to]
 
     def convert(self, text: str) -> str:
-        return self.model.lookup(text)[0][0]
+        res = self.model.lookup(text)
+        if not res:
+            return ""
+        print(res)
+        return res[0][0]

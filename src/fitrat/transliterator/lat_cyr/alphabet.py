@@ -74,11 +74,12 @@ mapping_upper = {
     "X": "Х",
     "Y": "Й",
     "Z": "З",
-    "’": "Ъ"
+    # "’": "Ъ"
 }
 
 with open(cwd + "/exceptions.json") as f:
     exceptions = json.load(f)
+    # exceptions = dict(sorted(exceptions.items(), reverse=True))
 
 vowels_lower = ["a", "e", "i", "o", "u", "o‘", "ya", "ye", "yo", "yu", "yo‘"]
 consonants_lower = ["b", "d", "f", "g", "h", "j", "k", "l", "m",

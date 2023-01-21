@@ -44,6 +44,8 @@ GOOD = "ХАРОШ"
 BAD = "ВЫСРАЛ"
 stats = {GOOD: 0, BAD: 0}
 
+collection = {}
+
 for d in container:
     for k, v in d.items():
         res = t.convert(k)
@@ -51,7 +53,8 @@ for d in container:
         stats[flag] += 1
 
         if flag == BAD:
-            # print(f"{flag:6} | {res:15} | {v}")
+            print(f"{flag:6} | {res:20} | {v}")
+            collection[k] = v
 
             if k in exceptions:
                 if exceptions[k] != v:
@@ -63,6 +66,9 @@ print("-" * 30)
 print(stats)
 print(len(exceptions))
 print("Time taken to load the fitrat:", round(delta, 5), "seconds")
+
+with open("bad.json", mode="w") as f:
+    json.dump(collection, f, ensure_ascii=False, indent=2)
 
 # ------ STATS ------
 # -------------------

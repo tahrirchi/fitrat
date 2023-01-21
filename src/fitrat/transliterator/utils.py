@@ -1,4 +1,5 @@
-from hfst_dev import HfstTransducer, regex, compile_lexc_script, compile_lexc_file
+from hfst_dev import HfstTransducer, regex, compile_lexc_file
+import time
 
 
 def cascade(*args: HfstTransducer) -> HfstTransducer:
@@ -43,26 +44,34 @@ def regex_mapper(mapping: dict) -> list:
     return [regex(f"[{f(key)}] -> [{f(value)}]") for key, value in mapping.items()]
 
 
-def regex_map_new(mapping: dict) -> list:
-  f = lambda x: ' '.join(list(x)).replace('-', '"-"')
-  # f = lambda x: x.replace('-', '"-"')
+def xfst_mapper(mapping: dict, key_tokenizer=lambda x: x, value_tokenizer=lambda x: x) -> list:
+    """
+    Input:
+      mapping - dictionary of mapping symbols
+	    key_tokenizer - an optional function for preprocessing keys of map
+      value_tokenizer - an optional function for preprocessing values of map
+    Output:
+      list - list of regex transducers that replace mapping keys to mapping values
+    """
+    return [regex(f"[{key_tokenizer(key)}]:[{value_tokenizer(value)}]") for key, value in mapping.items()]
 
-  # joiner = " .o. "
-  # joiner = ", "
 
-  # return regex(joiner.join([f"[{f(key)}] -> [{f(value)}]" for key, value in mapping.items()]))
-  return [regex(f"[{f(key)}] -> [{f(value)}]" for key, value in mapping.items())]
+def regex_map_new(mapping: dict) -> HfstTransducer:
+    # f = lambda x: ' '.join(list(x)).replace('-', '"-"')
+    # f = lambda x: x.replace('-', '"-"')
+    f = lambda x: x.replace('-', '%-')
 
-def gen_lexc_mapping(mapping: dict) -> HfstTransducer:
-  from io import StringIO
-  f = lambda x: x.replace('-', '"-"')
-  lexc = "Multichar_Symbols\nLEXICON Root\n\nNoun ;\n\nLEXICON Noun\n\n"
-  lexc += "\n".join([f"{k}:{v} #;" for k, v in mapping.items()])
-  
-  with open("test.lexc", mode="w") as f:
-    f.write(lexc)
+    # joiner = " .o. "
+    # joiner = ", "
 
-  return compile_lexc_file("test.lexc")
-
-  # return compile_lexc_script(lexc, output=StringIO)
-  # return compile_lexc_script(lexc)
+    # return regex(joiner.join([f"[{f(key)}] -> [{f(value)}]" for key, value in mapping.items()]))
+    s = time.perf_counter()
+    res = [regex(f"{f(key)}:{f(value)}") for key, value in mapping.items()]
+    e = time.perf_counter()
+    print("Exceptions:", len(mapping))
+    print("Time taken for compiling separate exceptions:", round(e-s, 3))
+    s = time.perf_counter()
+    union = disjunct(*res)
+    e = time.perf_counter()
+    print("Time taken for disjuncting exceptions into one:", round(e-s, 3))
+    return union

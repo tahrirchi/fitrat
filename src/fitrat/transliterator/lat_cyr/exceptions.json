@@ -1,5 +1,4 @@
 {
-  "feldyeger": "фельдъегерь",
   "inyeksiya": "инъекция",
   "obyekt": "объект",
   "obyektiv": "объектив",
@@ -1065,15 +1064,11 @@
   "vibratsiya": "вибрация",
   "vibroizolyatsiya": "виброизоляция",
   "vindikatsiya": "виндикация",
-  "vitse-": "вице-",
-  "vitse-admiral": "вице-адмирал",
-  "vitse-prezident": "вице-президент",
   "vulkanizatsiya": "вулканизация",
   "xemosorbsiya": "хемосорбция",
   "xoletsistit": "холецистит",
   "yurisdiksiya": "юрисдикция",
   "yurisprudensiya": "юриспруденция",
-  "yustitsiya": "юстиция",
   "poyabzal": "пойабзал",
   "poyabzalchi": "пойабзалчи",
   "poyabzalchilik": "пойабзалчилик",
@@ -1090,5 +1085,10 @@
   "yoga": "йога",
   "yogurt": "йогурт",
   "moyupa": "мойупа",
-  "poyustun": "пойустун"
+  "poyustun": "пойустун",
+  "yustitsiya": "юстиция",
+  "feldyeger": "фельдъегерь",
+  "vitse-": "вице-",
+  "vitse-admiral": "вице-адмирал",
+  "vitse-prezident": "вице-президент"
 }
