@@ -5,7 +5,7 @@ import os
 cwd = os.path.dirname(os.path.abspath(__file__))
 
 class LatCyrTransliterator():
-	_model = model_compile()
+	_model = HfstInputStream(cwd + '/model/lat_cyr.hfst').read()
 	_exception = HfstInputStream(cwd + '/model/exception_pruned.hfst').read()
 
 	def _convert_token(self, token: str):
