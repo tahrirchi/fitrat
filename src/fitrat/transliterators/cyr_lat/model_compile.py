@@ -1,6 +1,6 @@
 import hfst_dev as hfst
 from .alphabet import lower_case, upper_case, consonants, vowels, latin_uppercase, latin, cyrillic
-from .utils import cascade, list_to_group
+from ..utils import cascade, list_to_group
 
 def ts_rule():
 	ts_rule_1 = hfst.regex(f'[ ц ] -> [ s ], [ Ц ] -> [ S ] || {list_to_group(consonants)} _ , .#. _, " " _ ')

@@ -1,24 +1,34 @@
 from enum import Enum
-from .cyr_lat.model_compile import model_compile as cyrlat_model
-from .lat_cyr.model_compile import model_compile as latcyr_model
-
+from .cyr_lat.CyrLatTransliterator import CyrLatTransliterator
+from .lat_cyr.LatCyrTransliterator import LatCyrTransliterator
 
 class Type(Enum):
-	CYRLAT = 0
-	LATCYR = 1
-
+    LAT = 0
+    CYR = 1
 
 class Transliterator:
 	__models = {
-		Type.CYRLAT: cyrlat_model(),
-		Type.LATCYR: latcyr_model()
+		Type.LAT: CyrLatTransliterator(),
+		Type.CYR: LatCyrTransliterator()
 	}
 
-	def __init__(self, type: Type = Type.CYRLAT) -> None:
-		self.model = self.__models[type]
+	def __init__(self, to: Type = Type.LAT) -> None:
+		self.model = self.__models[to]
 
-	def convert(self, text: str) -> str:
-		return self.model.lookup(text)[0][0]
+	def transliterate(self, text: str):
+		running_token = ""
+		result_text = ""
+		for c in text:
+			if c.isalpha():
+				running_token += c
+			else:
+				result_text += self.model._convert_token(running_token) + c
+				running_token = ""
+
+		result_text += self.model._convert_token(running_token)
+
+		return result_text
+
 
 
 if __name__=="__main__":

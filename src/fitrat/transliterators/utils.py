@@ -1,3 +1,5 @@
+import hfst_dev as hfst
+
 def cascade(*args):
 	'''
 	  Input:
@@ -19,3 +21,14 @@ def list_to_group(ls):
 	'''
 	return "[" + " | ".join(ls) + "]"
 	
+
+def regex_mapper(mapping: dict) -> list:
+    """
+    Input:
+      mapping - dictionary of mapping symbols
+    Output:
+      list - list of regex transducers that replace mapping keys to mapping values
+    """
+    # Escape character
+    f = lambda x: x.replace('-', '"-"')
+    return [hfst.regex(f"[{f(key)}] -> [{f(value)}]") for key, value in mapping.items()]

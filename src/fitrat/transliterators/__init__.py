@@ -1,1 +1,1 @@
-from .transliterator import Transliterator, Type
+from .Transliterator import Transliterator, Type
