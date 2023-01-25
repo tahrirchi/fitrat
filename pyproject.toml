@@ -4,10 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fitrat"
-version = "0.0.2"
+version = "0.0.5"
 authors = [
   { name="Muhammadsaid Mamasaidov", email="mukhammadsaid.mamasaidov@gmail.com" },
   { name="Jasur Yusupov", email="jasuryusupov14@gmail.com" },
+]
+maintainers = [
+    { name="Jasur Yusupov", email="jasuryusupov14@gmail.com" },
+    { name="Muhammadsaid Mamasaidov", email="mukhammadsaid.mamasaidov@gmail.com" }
 ]
 license = {file = "LICENSE"}
 keywords = ["tahrirchi", "language", "transliteration", "morphology", "uzbek", "nlp"]
