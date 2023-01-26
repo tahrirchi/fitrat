@@ -1,4 +1,4 @@
-from fitrat.transliterators.lat_cyr.model_compile import model_compile
+# from fitrat.transliterators.lat_cyr.model_compile import model_compile
 from hfstol import HFSTOL
 import os 
 
