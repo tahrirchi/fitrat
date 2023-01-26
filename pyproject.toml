@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fitrat"
-version = "0.0.8"
+version = "0.0.9"
 authors = [
   { name="Muhammadsaid Mamasaidov", email="mukhammadsaid.mamasaidov@gmail.com" },
   { name="Jasur Yusupov", email="jasuryusupov14@gmail.com" },
