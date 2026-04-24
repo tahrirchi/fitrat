@@ -17,9 +17,10 @@ license = "MIT"
 keywords = ["tahrirchi", "language", "transliteration", "morphology", "uzbek", "nlp"]
 description = "An NLP library for Uzbek. It includes morphological analysis, language identification, transliterators and tokenizers."
 readme = "README.md"
-requires-python = ">=3.10,<3.13"
+requires-python = ">=3.9,<3.13"
 classifiers = [
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -35,13 +36,12 @@ dependencies = [
 
 [project.optional-dependencies]
 compile = [
-  "hfst-dev>=3.15",
+  "hfst>=3.16",
 ]
-
-[dependency-groups]
 dev = [
   "pytest>=8.0",
   "ruff>=0.9",
+  "pyright>=1.1.399",
 ]
 
 [project.urls]
@@ -49,7 +49,7 @@ Homepage = "https://github.com/tahrirchi/fitrat"
 "Bug Tracker" = "https://github.com/tahrirchi/fitrat/issues"
 
 [tool.ruff]
-target-version = "py310"
+target-version = "py39"
 line-length = 120
 
 [tool.ruff.lint]
@@ -62,9 +62,20 @@ select = ["E", "F", "I", "UP"]
 "src/fitrat/transliterators/lat_cyr/model_compile.py" = ["F401", "E501"]
 
 [tool.pyright]
-pythonVersion = "3.10"
+pythonVersion = "3.9"
 typeCheckingMode = "standard"
 reportMissingImports = "warning"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fitrat"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.venv*",
+  "/venv*",
+  "/dist",
+  "/build",
+]

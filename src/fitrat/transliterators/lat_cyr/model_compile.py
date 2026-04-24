@@ -1,4 +1,4 @@
-import hfst_dev as hfst
+import hfst
 
 from ..utils import cascade, list_to_group, regex_mapper
 from .alphabet import mapping_lower, mapping_upper, vowels

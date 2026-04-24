@@ -1,4 +1,4 @@
-import hfst_dev as hfst
+import hfst
 
 from ..utils import cascade, list_to_group
 from .alphabet import consonants, cyrillic, latin, latin_uppercase, lower_case, upper_case, vowels

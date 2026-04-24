@@ -1,4 +1,4 @@
-import hfst_dev as hfst
+import hfst
 
 
 def cascade(*args):

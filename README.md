@@ -1,6 +1,6 @@
 # fitrat
 
-<img src="https://github.com/tahrirchi/fitrat/blob/main/fitrat.png" alt="Abdurauf Fitrat" style="width:125px;" align="left"/>
+<img src="https://github.com/tahrirchi/fitrat/blob/main/assets/fitrat.png" alt="Abdurauf Fitrat" style="width:125px;" align="left"/>
 
 An NLP library for Uzbek. It includes morphological analysis, transliterators, language identifiers, tokenizers and many more.
 
@@ -10,7 +10,7 @@ It is named after historian and linguist Abdurauf Fitrat, who was one of the cre
 
 ## Requirements
 
-- Python 3.10 - 3.12
+- Python 3.9 - 3.12
 
 ## Installation
 
@@ -48,7 +48,7 @@ print(result)
 
 While Cyrillic-Latin conversion is rule-based and simple, the converse is not true. We included special pre-compiled exceptions transducer for Latin-Cyrillic that handles all (to our knowledge) exceptions. We'll continue working on improving on our exceptions list.
 
-If you want to compile the transliterators from source, you have to use `hfst-dev` or `hfst` library. The package uses only pre-compiled binaries and `hfstol` library for efficient lookup.
+If you want to compile the transliterators from source, use the `hfst` library. The package uses only pre-compiled binaries and `hfstol` library for efficient lookup.
 
 ### Language Identification
 
@@ -85,11 +85,10 @@ print(word_tokenize(s))
 
 ```shell
 # uv (recommended)
-uv sync --group dev
+uv sync --extra dev
 
 # pip
-pip install -r requirements-dev.txt
-pip install -e .
+pip install -e ".[dev]"
 ```
 
 ### Running tests
@@ -99,7 +98,7 @@ pip install -e .
 uv run pytest
 
 # pip
-pytest
+python -m pytest
 ```
 
 ### Linting
@@ -109,7 +108,7 @@ pytest
 uv run ruff check src/
 
 # pip
-ruff check src/
+python -m ruff check src/
 ```
 
 ### Type checking
@@ -119,7 +118,7 @@ ruff check src/
 uv run pyright src/
 
 # pip
-pyright src/
+python -m pyright src/
 ```
 
 ## Authors
