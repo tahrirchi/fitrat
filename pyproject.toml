@@ -1,34 +1,81 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
 name = "fitrat"
-version = "0.0.9"
+version = "0.1.0"
 authors = [
-  { name="Muhammadsaid Mamasaidov", email="mukhammadsaid.mamasaidov@gmail.com" },
-  { name="Jasur Yusupov", email="jasuryusupov14@gmail.com" },
+  { name = "Muhammadsaid Mamasaidov", email = "mukhammadsaid.mamasaidov@gmail.com" },
+  { name = "Jasur Yusupov", email = "jasuryusupov14@gmail.com" },
 ]
 maintainers = [
-    { name="Muhammadsaid Mamasaidov", email="mukhammadsaid.mamasaidov@gmail.com" },
-	{ name="Jasur Yusupov", email="jasuryusupov14@gmail.com" },
+  { name = "Muhammadsaid Mamasaidov", email = "mukhammadsaid.mamasaidov@gmail.com" },
+  { name = "Jasur Yusupov", email = "jasuryusupov14@gmail.com" },
 ]
-license = {file = "LICENSE"}
+license = "MIT"
 keywords = ["tahrirchi", "language", "transliteration", "morphology", "uzbek", "nlp"]
 description = "An NLP library for Uzbek. It includes morphological analysis, language identification, transliterators and tokenizers."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.9,<3.13"
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: POSIX",
-    "Topic :: Text Processing :: Linguistic"
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Text Processing :: Linguistic",
 ]
 dependencies = [
-  "fasttext==0.9.2",
-  "hfstol==1.2.11"
+  "fasttext-wheel>=0.9.2",
+  "numpy<2",
+  "hfstol>=1.2.11",
+]
+
+[project.optional-dependencies]
+compile = [
+  "hfst>=3.16",
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.9",
+  "pyright>=1.1.399",
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/tahrirchi/fitrat"
+Homepage = "https://github.com/tahrirchi/fitrat"
 "Bug Tracker" = "https://github.com/tahrirchi/fitrat/issues"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/fitrat/transliterators/cyr_lat/alphabet.py" = ["E501"]
+"src/fitrat/transliterators/lat_cyr/alphabet.py" = ["F601"]
+"src/fitrat/transliterators/cyr_lat/model_compile.py" = ["F401", "E501"]
+"src/fitrat/transliterators/lat_cyr/model_compile.py" = ["F401", "E501"]
+
+[tool.pyright]
+pythonVersion = "3.9"
+typeCheckingMode = "standard"
+reportMissingImports = "warning"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fitrat"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.venv*",
+  "/venv*",
+  "/dist",
+  "/build",
+]

@@ -1,8 +1,3 @@
-import json
-import os
-
-cwd = os.path.dirname(os.path.abspath(__file__))
-
 mapping_lower = {
     "o‘": "ў",
     "g‘": "ғ",
@@ -37,7 +32,7 @@ mapping_lower = {
     "x": "х",
     "z": "з",
     "y": "й",
-    "’": "ъ"
+    "’": "ъ",
 }
 
 mapping_upper = {
@@ -77,17 +72,57 @@ mapping_upper = {
     # "’": "Ъ"
 }
 
-# with open(cwd + "/exceptions.json") as f:
-#     exceptions = json.load(f)
-    # exceptions = dict(sorted(exceptions.items(), reverse=True))
-
 vowels_lower = ["a", "e", "i", "o", "u", "o‘", "ya", "ye", "yo", "yu", "yo‘"]
-consonants_lower = ["b", "d", "f", "g", "h", "j", "k", "l", "m",
-                    "n", "p", "q", "r", "s", "t", "v", "x", "y", "z", "g‘", "sh", "ch"]
+consonants_lower = [
+    "b",
+    "d",
+    "f",
+    "g",
+    "h",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "v",
+    "x",
+    "y",
+    "z",
+    "g‘",
+    "sh",
+    "ch",
+]
 
 vowels_upper = ["A", "E", "I", "O", "U", "O‘", "Ya", "Ye", "Yo", "Yu", "Yo‘"]
-consonants_upper = ["B", "D", "F", "G", "H", "J", "K", "L", "M",
-                    "N", "P", "Q", "R", "S", "T", "V", "X", "Y", "Z", "G‘", "Sh", "Ch"]
+consonants_upper = [
+    "B",
+    "D",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "V",
+    "X",
+    "Y",
+    "Z",
+    "G‘",
+    "Sh",
+    "Ch",
+]
 
 vowels = vowels_lower + vowels_upper
 consonants = consonants_lower + consonants_upper

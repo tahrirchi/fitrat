@@ -1,5 +1,12 @@
 venv/
+.venv/
+.venv*/
+venv*/
 __pycache__/
 dist/
+build/
+*.egg-info/
 .ipynb_checkpoints/
 .DS_Store
+.pytest_cache/
+.ruff_cache/

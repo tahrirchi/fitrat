@@ -1,6 +1,6 @@
 # fitrat
 
-<img src="https://github.com/tahrirchi/fitrat/blob/main/fitrat.png" alt="Abdurauf Fitrat" style="width:125px;" align="left"/>
+<img src="https://github.com/tahrirchi/fitrat/blob/main/assets/fitrat.png" alt="Abdurauf Fitrat" style="width:125px;" align="left"/>
 
 An NLP library for Uzbek. It includes morphological analysis, transliterators, language identifiers, tokenizers and many more.
 
@@ -8,13 +8,25 @@ It is named after historian and linguist Abdurauf Fitrat, who was one of the cre
 
 <br />
 
-## Usage
+## Requirements
 
-### Installation
+- Python 3.9 - 3.12
+
+## Installation
+
+### pip
 
 ```shell
 pip install fitrat
 ```
+
+### uv
+
+```shell
+uv add fitrat
+```
+
+## Usage
 
 ### Transliteration
 
@@ -36,7 +48,7 @@ print(result)
 
 While Cyrillic-Latin conversion is rule-based and simple, the converse is not true. We included special pre-compiled exceptions transducer for Latin-Cyrillic that handles all (to our knowledge) exceptions. We'll continue working on improving on our exceptions list.
 
-If you want to compile the transliterators from source, you have to use `hfst-dev` or `hfst` library. The package uses only pre-compiled binaries and `hfstol` library for efficient lookup.
+If you want to compile the transliterators from source, use the `hfst` library. The package uses only pre-compiled binaries and `hfstol` library for efficient lookup.
 
 ### Language Identification
 
@@ -57,7 +69,7 @@ print(lang_detector.is_uzbek("Текст на русском языке"))
 # False
 ```
 
-## Tokenization
+### Tokenization
 
 ```python
 from fitrat import word_tokenize
@@ -65,6 +77,48 @@ from fitrat import word_tokenize
 s = "Bugun o'zbekchada gapirishga qaror qildim!"
 print(word_tokenize(s))
 # ['Bugun', "o'zbekchada", 'gapirishga', 'qaror', 'qildim', '!']
+```
+
+## Development
+
+### Setup
+
+```shell
+# uv (recommended)
+uv sync --extra dev
+
+# pip
+pip install -e ".[dev]"
+```
+
+### Running tests
+
+```shell
+# uv
+uv run pytest
+
+# pip
+python -m pytest
+```
+
+### Linting
+
+```shell
+# uv
+uv run ruff check src/
+
+# pip
+python -m ruff check src/
+```
+
+### Type checking
+
+```shell
+# uv
+uv run pyright src/
+
+# pip
+python -m pyright src/
 ```
 
 ## Authors
